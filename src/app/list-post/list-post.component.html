@@ -1,0 +1,41 @@
+<div class="mx-auto">
+  <a routerLink="/add-post" class="btn btn-primary my-2 my-sm-0 mr-2">Click Here To Add New  Post</a>
+</div>
+
+<br>
+<br>
+<!-- <input type="text" (keyup)="onKey($event)"> -->
+<input type="text" [(ngModel)]="searchText">
+
+<table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titre </th>
+      <th scope="col">Description</th>
+      <th scope="col">Catégories</th>
+      <th scope="col">Date</th>
+      <th scope="col">ACTION</th>
+
+
+
+   
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <tr *ngFor="let post of posts | filter : searchText; let i=index">
+      <th scope="row">{{ (i+1) | number:'3.0' }}</th>
+      <td>{{ post.postName | uppercase}}</td>
+      <td>{{ post.desc | uppercase}}</td>
+      <td>{{ post.postdesc | uppercase}}</td>
+      <td>{{ post.postdesc | uppercase}}</td>
+      <td><a [routerLink]="['update-post', i]" class="btn btn-success my-2 my-sm-0 mr-2">Update post</a>
+        <button type="button" (click)="delete(i)" class="btn btn-danger my-2 my-sm-0">Delete post</button>
+      </td>
+      
+    </tr>
+    
+  </tbody>
+  
+</table>

@@ -1,0 +1,47 @@
+<p>update-post works!</p>
+<div class="row">
+  <div class="offset-3 col-6">
+    <form [formGroup]="updateForm">
+    <!-- titre -->
+    <h1 class="text-center text-primary my-5">Mettre à jour votre post</h1>
+  
+      <!-- name Poste -->
+  <div>
+    <label for="postName" class="form-label">Add title for your post</label>
+    <input type="postName" class="form-control" id="postName" placeholder="ADD POST NAME" formControlName="postName" [ngClass]="{'is-invalid': submitted && updateForm.controls.postName.errors , 'is-valid': submitted &&!updateForm.controls.postName.errors}">
+    <div class="invalid-feedback d-block">
+      <div *ngIf="submitted && updateForm.controls.postName.hasError('required')">This filed is required!</div>
+      <div *ngIf="submitted && updateForm.controls.postName.hasError('minlength')">This filed must be > 4</div>
+    </div>
+  </div>
+  <!-- description Poste -->
+  <div class="mb-3">
+    <label for="desc" class="form-label">Add description for your post</label>
+    <textarea class="form-control" id="desc" rows="3" formControlName="desc" [ngClass]="{'is-invalid': submitted && updateForm.controls.desc.errors , 'is-valid': submitted &&!updateForm.controls.desc.errors}"></textarea>
+    <div class="invalid-feedback d-block">
+      <div *ngIf="submitted && updateForm.controls.desc.hasError('required')">This filed is required!</div>
+      <div *ngIf="submitted && updateForm.controls.desc.hasError('minlength')">This filed must be > 4</div>
+    </div>
+  </div>
+  <!-- catégories -->
+<div>
+  <select class="form-select" aria-label="Default select example">
+    <option selected>Catégories</option>
+    <option value="Sport">Sport</option>
+    <option value="Technologies">Technologies</option>
+    <option value="Economie">Économie</option>
+    <option value="Societe">Société</option>
+    <option value="Culture">Culture</option>
+  </select>
+  </div>
+  <br>
+  <!-- button ADD -->
+  <button type="button" (click)="update()"  class="btn btn-primary btn-block">update</button>
+  <br>
+  <br>
+  <!-- button CANCEL -->
+  
+  <a routerLink="" class="btn btn-danger btn-block"  role="button">Cancel</a>
+  </form>
+  </div>
+  </div>

@@ -1,0 +1,46 @@
+<div class="row">
+<div class="offset-3 col-6">
+  <form [formGroup]="addForm">
+  <!-- titre -->
+  <h1 class="text-center text-primary my-5">Ajouter un nouveau title</h1>
+
+    <!-- name Poste -->
+<div>
+  <label for="namePost" class="form-label">Add name for your post</label>
+  <input type="postName" class="form-control" id="postName" placeholder="ADD POST NAME" formControlName="postName" [ngClass]="{'is-invalid': submitted && addForm.controls.postName.errors , 'is-valid': submitted &&!addForm.controls.addpost.errors}">
+  <div class="invalid-feedback d-block">
+    <div *ngIf="submitted && addForm.controls.postName.hasError('required')">This filed is required!</div>
+    <div *ngIf="submitted && addForm.controls.postName.hasError('minlength')">This filed must be > 4</div>
+  </div>
+</div>
+<!-- description Poste -->
+<div class="mb-3">
+  <label for="desc" class="form-label">Add description for your post</label>
+  <textarea class="form-control" id="desc" rows="3" formControlName="desc" [ngClass]="{'is-invalid': submitted && addForm.controls.desc.errors , 'is-valid': submitted &&!addForm.controls.desc.errors}"></textarea>
+  <div class="invalid-feedback d-block">
+    <div *ngIf="submitted && addForm.controls.desc.hasError('required')">This filed is required!</div>
+    <div *ngIf="submitted && addForm.controls.desc.hasError('minlength')">This filed must be > 4</div>
+  </div>
+</div>
+
+<!-- catégories -->
+<div>
+<select class="form-select" aria-label="Default select example" name="category" >
+  <option selected="Sport">Sport</option>
+  <option value="Technologies">Technologies</option>
+  <option value="Economie">Économie</option>
+  <option value="Societe">Société</option>
+  <option value="Culture">Culture</option>
+</select>
+</div>
+<br>
+<!-- button ADD -->
+<button type="button" (click)="add()"  class="btn btn-primary btn-block">ADD</button>
+<br>
+<br>
+<!-- button CANCEL -->
+
+<a routerLink="" class="btn btn-danger btn-block"  role="button">Cancel</a>
+</form>
+</div>
+</div>
